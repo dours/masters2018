@@ -5,6 +5,7 @@ library ieee;
 entity task2 is 
     port (
         clk, reset : in std_logic;
+        i_a, i_b : in integer;
         output : out std_logic
     );
 end;
@@ -13,8 +14,8 @@ architecture Behavioral of task2 is
     type statetype is (S0, S1);
     signal state, nextstate: statetype;
     signal acc: integer := 0;
-    signal a: integer := 3;
-    signal b: integer := 5;
+    signal a: integer := i_a;
+    signal b: integer := i_b;
 begin
     process (clk, reset) begin
         if reset = '1' then state <= S0;
